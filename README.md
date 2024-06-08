@@ -16,8 +16,7 @@ This is frontend starter project for nodejs-aws mentoring program. It uses the f
 - [TypeScript](https://www.typescriptlang.org/) as a type checking tool
 
 ## Deployment link
-
-s3 bucket: https://cdkstack-rssreactappbucket219fc89b-rlst7zgckku3.s3.amazonaws.com/index.html
+http://cdkstack-rssreactappbucket219fc89b-rlst7zgckku3.s3-website-us-east-1.amazonaws.com
 
 ## Installation
 
