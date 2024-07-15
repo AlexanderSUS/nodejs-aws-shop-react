@@ -83,7 +83,7 @@ export default function CSVFileImport({ url, title }: CSVFileImportProps) {
       )}
       <Snackbar
         open={isOpen}
-        autoHideDuration={50000}
+        autoHideDuration={5000}
         onClose={handleClose}
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       >
