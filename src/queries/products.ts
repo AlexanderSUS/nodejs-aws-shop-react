@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import API_PATHS from "~/constants/apiPaths";
+// import API_PATHS from "~/constants/apiPaths";
 import { AvailableProduct } from "~/models/Product";
 import { useQuery, useQueryClient, useMutation } from "react-query";
 import React from "react";
@@ -9,7 +9,7 @@ export function useAvailableProducts() {
     "available-products",
     async () => {
       const res = await axios.get<AvailableProduct[]>(
-        "https://nbe6zqyyod.execute-api.localhost.localstack.cloud:4566/prod/products"
+        "http://localhost:7000/products"
       );
       return res.data;
     }
@@ -29,7 +29,7 @@ export function useAvailableProduct(id?: string) {
     ["product", { id }],
     async () => {
       const res = await axios.get<AvailableProduct>(
-        `https://nbe6zqyyod.execute-api.localhost.localstack.cloud:4566/prod/products/${id}`
+        `http://localhost:7000/products/${id}`
       );
       return res.data;
     },
@@ -48,27 +48,20 @@ export function useRemoveProductCache() {
 
 export function useUpsertAvailableProduct() {
   return useMutation((values: AvailableProduct) =>
-    axios.put<AvailableProduct>(
-      "https://nbe6zqyyod.execute-api.localhost.localstack.cloud:4566/prod/products",
-      values,
-      {
-        headers: {
-          Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
-        },
-      }
-    )
+    axios.put<AvailableProduct>("http://localhost:7000/products", values, {
+      headers: {
+        Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
+      },
+    })
   );
 }
 
 export function useDeleteAvailableProduct() {
   return useMutation((id: string) =>
-    axios.delete(
-      `https://nbe6zqyyod.execute-api.localhost.localstack.cloud:4566/prod/products/${id}`,
-      {
-        headers: {
-          Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
-        },
-      }
-    )
+    axios.delete(`http://localhost:7000/products/${id}`, {
+      headers: {
+        Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
+      },
+    })
   );
 }
