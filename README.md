@@ -64,4 +64,20 @@ To destroy deployment run
 npm run destroy
 ```
 
+Replace URLs 
+
+*Edit get-url.sh if needed: replace API_SUBSTITUTION variable, and replace 
+"awslocal" command with "aws" to pull data from cloud*
+```bash
+./get-url.sh
+```
+
+Generate token
+```bash
+cat env.example > .env
+```
+Edit .env file with you credentials and then run 
+```bash
+./generate-token.sh
+```
 
